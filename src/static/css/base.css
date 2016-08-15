@@ -1,0 +1,88 @@
+@charset "utf-8";
+html, body, div, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, ul, li, fieldset, form, label, input, legend, table, caption, tbody, tfoot, thead, tr, th, td, textarea, article, aside, audio, canvas, figure, footer, header, mark, menu, nav, section, time, video { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+article, aside, dialog, figure, footer, header, hgroup, nav, section, blockquote { display: block; }
+ul, ol { list-style: none; }
+li{ float: left; }
+img { border: 0 none; vertical-align: top; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+strong, em, i { font-style: normal; font-weight: normal; }
+ins { text-decoration: underline; }
+del { text-decoration: line-through; }
+mark { background: none; }
+input::-ms-clear { display: none !important; }
+body { font: 12px/1.5 \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", "Droid Sans Fallback", SimSun, sans-serif; background: #fff; }
+a { text-decoration: none; color: #333; outline: none}
+a:hover { text-decoration: underline; }
+
+.clearfix:after{ visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+.clearfix{ zoom:1;}
+
+.fn-hide{ display: none;}
+.fn-block{ display: block;}
+.fn-inline{ display: inline;}
+
+.fl-l{ float:left;}
+.fl-r{ float:right;}
+.fl-n{ float:none;}
+
+.align-l{ text-align:left;}
+.align-r{ text-align:right;}
+.align-c{ text-align:center;}
+
+/*padding*/
+.p-2{ padding:2px;}
+.p-10{ padding:10px;}
+.p-15{ padding:15px;}
+.p-20{ padding:20px;}
+.p-l-95{ padding-left:95px;}
+.p-l-100{ padding-left:100px;}
+.p-l-105{ padding-left:105px;}
+.p-l-110{ padding-left:110px;}
+.p-l-115{ padding-left:115px;}
+.p-l-120{ padding-left:120px;}
+.p-t-8{ padding-top:8px;}
+.p-t-95{ padding-top:95px;}
+.p-t-100{ padding-top:100px;}
+.p-t-105{ padding-top:105px;}
+.p-t-110{ padding-top:110px;}
+.p-t-115{ padding-top:115px;}
+.p-t-120{ padding-top:120px;}
+
+/*margin*/
+.m-0{ margin:0px;}
+.m-5{ margin:5px;}
+.m-10{ margin:10px;}
+.m-15{ margin:15px;}
+.m-20{ margin:20px;}
+.m-l-0{ margin-left:0px;}
+.m-l-5{ margin-left:5px;}
+.m-l-10{ margin-left:10px;}
+.m-l-15{ margin-left:15px;}
+.m-l-20{ margin-left:20px;}
+.m-l-25{ margin-left:25px;}
+.m-l-30{ margin-left:30px;}
+.m-l-40{ margin-left:40px;}
+.m-l-50{ margin-left:50px;}
+.m-l-60{ margin-left:60px;}
+.m-l-70{ margin-left:70px;}
+.m-r-0{ margin-right:0px;}
+.m-r-5{ margin-right:5px;}
+.m-r-10{ margin-right:10px;}
+.m-r-15{ margin-right:15px;}
+.m-r-20{ margin-right:15px;}
+.m-t-0{ margin-top:0px;}
+.m-t-5{ margin-top:5px;}
+.m-t-10{ margin-top:10px;}
+.m-t-15{ margin-top:15px;}
+.m-t-20{ margin-top:15px;}
+.m-b-0{ margin-bottom:0px;}
+.m-b-5{ margin-bottom:5px;}
+.m-b-10{ margin-bottom:10px;}
+.m-b-15{ margin-bottom:15px;}
+.m-b-20{ margin-bottom:15px;}
+.m-b-195{ margin-bottom:195px;}
+
+
