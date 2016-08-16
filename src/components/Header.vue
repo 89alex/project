@@ -1,12 +1,12 @@
 <template>
   <header class="bar bar-nav">
     <select name="" id="">
-      <option value="">广州</option>
+      <option value="">广州{{method}}</option>
       <option value="">深圳</option>
       <option value="">东莞</option>
       <option value="">茂名</option>
     </select>
-    <span class="icon icon-search pull-right" v-link="{ name: 'found'}" v-on:click="navChange(3)"></span>
+    <span class="icon icon-search pull-right"></span>
     <h1 class="title"><ul><li class="t-active">热映</li><li>待映</li><li>榜单</li></ul></h1>
   </header>
 </template>
