@@ -1,6 +1,8 @@
 <template>
   <index-nav></index-nav>
-  <router-view></router-view>
+  <div class="ui-warp">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -13,3 +15,6 @@ export default {
 }
 </script>
 
+<style>
+  .ui-warp{ margin: 2.5rem 0; overflow: hidden;}
+</style>

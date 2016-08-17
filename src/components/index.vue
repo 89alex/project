@@ -55,7 +55,8 @@
 
 <style>
   @import '../static/css/base.css';
-  .bar{ background-color: rgba(1,106,200,0.7); }
+  body{ position: inherit; overflow: auto; }
+  .bar{ background-color: #4c96d8; position: fixed; bottom: 0 }
   .bar-tab .tab-item{ color: #fff }
   .bar-tab .tab-item.active, .bar-tab .tab-item:active{ color: #fff900 }
 </style>
