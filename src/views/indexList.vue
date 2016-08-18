@@ -1,6 +1,6 @@
 <template>
   <a-header></a-header>
-  <div id="movie" v-on:touchmove="scrollLoading">
+  <div id="movie">
     <div id="movie-con">
       <div v-for="lists in list" class="movie-list">
         <h1><i></i>{{lists.title}}</h1>
@@ -27,7 +27,8 @@
     },
     data () {
       return {
-        list: []
+        list: [],
+        time: null // 数据加载定时器
       }
     },
     methods: {
@@ -60,6 +61,7 @@
         ]
       },
       scrollLoading: function (e) {
+        // 滚动加载
         const that = this
         const data = [
           {title: '热映电影排行榜', movie: [
@@ -81,9 +83,9 @@
         // const $movie = document.getElementById('movie')
         // 判断页面滚动底部
         const scrollHeight = document.body.offsetHeight - window.innerHeight
-        if (scrollHeight < (document.body.scrollTop)) {
-          cleanTimeout()
-          setTimeout(function () {
+        if (scrollHeight < (document.body.scrollTop - 50)) {
+          clearTimeout(this.times)
+          this.times = setTimeout(function () {
             data.map(datas => {
               that.list.push(datas)
             })
@@ -97,7 +99,11 @@
       }
     },
     ready () {
+      const that = this
       this.getState()
+      window.onscroll = function () {
+        that.scrollLoading()
+      }
     }
   }
 </script>
