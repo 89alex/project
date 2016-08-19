@@ -3,21 +3,12 @@
   <div class="buy-movie">
     <img width="100%" src="/static/images/img/buy-banner1.png" alt="">
     <ul class="movie-list">
-      <li>
+      <li v-for="lists in list">
         <dl>
-          <dt><img width="100%" src="/static/images/img/m-img1.png" alt=""></dt>
-          <dd><h2>碟中谍5：神秘国度</h2><span class="max">IMAX 3D</span><p class="num"><i>9.0</i>分</p></dd>
-          <dd><p>外练净骨皮，阿汤扒飞机</p></dd>
-          <dd><p>主演：汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅</p></dd>
-        </dl>
-        <span class="buy">购票</span>
-      </li>
-      <li>
-        <dl>
-          <dt><img width="100%" src="/static/images/img/m-img1.png" alt=""></dt>
-          <dd><h2>碟中谍5：神秘国度</h2><span class="max">IMAX 3D</span><p class="num"><i>9.0</i>分</p></dd>
-          <dd><p>外练净骨皮，阿汤扒飞机</p></dd>
-          <dd><p>主演：汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅</p></dd>
+          <dt><img width="100%" :src="lists.img" alt=""></dt>
+          <dd><h2>{{lists.title}}</h2><span class="max">{{lists.max}}</span><p class="num"><i>{{lists.grade}}</i>分</p></dd>
+          <dd><p>{{lists.miaoshu}}</p></dd>
+          <dd><p>主演：{{lists.persons}}</p></dd>
         </dl>
         <span class="buy">购票</span>
       </li>
@@ -30,6 +21,22 @@
   export default {
     components: {
       aHeader
+    },
+    data () {
+      return {
+        list: ''
+      }
+    },
+    methods: {
+      getState: function () {
+        this.list = [
+          {title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img1.png', max: 'IMAX 3D', grade: '9.0'},
+          {title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0'}
+        ]
+      }
+    },
+    ready () {
+      this.getState()
     }
   }
 </script>
