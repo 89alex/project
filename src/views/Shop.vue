@@ -4,37 +4,42 @@
       <header class="bar bar-nav">
         <h1 class="title">我的订单</h1>
       </header>
-      <div class="sale-list">
-        <div class="s-header"><label for=""><input class="ui-checkbox" type="checkbox" v-on:click="Checked"></label><p>碟中谍5：神秘国度</p></div>
+      <div class="sale-list" v-for="states in state">
+        <div class="s-header"><label for=""><input class="ui-checkbox" :checked="allCheckeds" type="checkbox" v-on:click="Checked($index)"></label><p>{{states.title}}</p></div>
         <dl>
-          <dt><img width="100%" src="/static/images/img/m-img1.png" alt=""></dt>
-          <dd>数量：<strong>4</strong></dd>
-          <dd>总价：<strong>200</strong></dd>
-          <dd class="s-add"><p><span class="btn reduce">-</span> 2 <span class="btn add">+</span></p></dd>
-        </dl>
-      </div>
-      <div class="sale-list">
-        <div class="s-header"><label for=""><input class="ui-checkbox" type="checkbox" v-on:click="Checked"></label><p>碟中谍5：神秘国度</p></div>
-        <dl>
-          <dt><img width="100%" src="/static/images/img/m-img1.png" alt=""></dt>
-          <dd>数量：<strong>4</strong></dd>
-          <dd>总价：<strong>200</strong></dd>
-          <dd class="s-add"><p><span class="btn reduce">-</span> 2 <span class="btn add">+</span></p></dd>
+          <dt><img width="100%" :src="states.img" alt=""></dt>
+          <dd>单价：<strong>￥{{states.sale}}</strong></dd>
+          <dd>总价：<strong>￥{{states.sale*states.num}}</strong></dd>
+          <dd class="s-add"><p><span v-on:click="reduxNum($index)" class="btn reduce">-</span> {{states.num}} <span v-on:click="addNum($index)" class="btn add">+</span></p></dd>
         </dl>
       </div>
     </div>
     <div class="sale-account">
       <label for=""><input class="ui-checkbox" v-on:click="allChecked" type="checkbox"> 全选</label>
-      <div class="right">合计：<span>￥0</span> <input class="confirm" type="submit" value="结算（0）"></div>
+      <div class="right">合计：<span>￥{{checks}}</span> <input class="confirm" type="submit" value="结算({{c_num}})"></div>
     </div>
   </div>
 </template>
 
 <script>
   export default {
+    data () {
+      return {
+        state: [],
+        allCheckeds: false,
+        d_check: 0,
+        num: 0
+      }
+    },
     methods: {
+      getState: function () {
+        this.state = [
+          {title: '碟中谍5：神秘国度', img: '/static/images/img/m-img3.png', num: 4, sale: 50, check: false},
+          {title: '诛仙-青云志', img: '/static/images/img/m-img2.png', num: 2, sale: 60, check: false}
+        ]
+      },
       allChecked: function (e) {
-        const checkbox = document.getElementsByClassName('ui-checkbox')
+        /* const checkbox = document.getElementsByClassName('ui-checkbox')
         const bool = e.target.getAttribute('checked')
         if (bool) {
           for (var i = 0; i < checkbox.length; i++) {
@@ -45,12 +50,58 @@
             checkbox[r].setAttribute('checked', 'checked')
           }
         }
-        console.log(bool)
+        console.log(bool) */
         // console.log(e.target.setAttribute('checked', 'checked'))
+        this.allCheckeds = !this.allCheckeds
+        this.state.map(states => {
+          states.check = this.allCheckeds
+        })
+        // setTimeout(this.setNum, 100)
       },
-      Checked: function (e) {
-        e.target.getAttribute('checked') ? e.target.removeAttribute('checked') : e.target.setAttribute('checked', 'checked')
+      Checked: function (index) {
+        this.state.map((states, num) => {
+          if (num === index) {
+            states.check = !states.check
+          }
+        })
+      },
+      addNum: function (index) {
+        this.state.map((states, num) => {
+          if (num === index) {
+            states.num ++
+          }
+        })
+      },
+      reduxNum: function (index) {
+        this.state.map((states, num) => {
+          if (num === index) {
+            states.num --
+          }
+        })
       }
+    },
+    computed: {
+      checks: function () {
+        this.d_check = 0
+        this.state.map(states => {
+          if (states.check) {
+            this.d_check = this.d_check + states.num * states.sale
+          }
+        })
+        return this.d_check
+      },
+      c_num: function () {
+        this.num = 0
+        this.state.map(states => {
+          if (states.check) {
+            this.num ++
+          }
+        })
+        return this.num
+      }
+    },
+    ready () {
+      this.getState()
     }
   }
 </script>
