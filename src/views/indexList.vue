@@ -91,11 +91,19 @@
             })
             // that.list.concat(data)
           }, 2000)
-          console.log(document.body.clientHeight)
+          console.log(scrollHeight)
         }
         // console.log((document.body.scrollHeight - document.body.clientHeight))
         // console.log(document.body.offsetHeight)
         // this.list.push(data)
+      }
+    },
+    route: {
+      canDeactivate (transition) {
+        // this.getState()
+        // transition.next()
+        console.log('路由切换我就执行')
+        transition.next()
       }
     },
     ready () {
@@ -104,6 +112,7 @@
       window.onscroll = function () {
         that.scrollLoading()
       }
+      console.log('页面载入只执行一次')
     }
   }
 </script>

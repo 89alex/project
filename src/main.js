@@ -4,10 +4,15 @@ import App from './App'
 
 Vue.use(Router)
 
-const router = new Router()
+const router = new Router({
+  hashbang: false,
+  history: true,
+  saveScrollPosition: true,
+  transitionOnLoad: true
+})
 
 router.map({
-  '/index-list': {
+  '/': {
     name: 'index-list',
     component: (resolve) => {
       require(['./views/indexList.vue'], resolve)
@@ -31,10 +36,6 @@ router.map({
       require(['./views/Shop.vue'], resolve)
     }
   }
-})
-
-router.redirect({
-  '*': '/index-list'
 })
 
 router.start(App, '#app')

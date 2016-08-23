@@ -35,6 +35,11 @@
         ]
       }
     },
+    route: {
+      data (transition) {
+        // this.getState()
+      }
+    },
     ready () {
       this.getState()
     }

@@ -34,8 +34,8 @@
     methods: {
       getState: function () {
         this.state = [
-          {title: '碟中谍5：神秘国度', img: '/static/images/img/m-img3.png', num: 4, sale: 50, check: false},
-          {title: '诛仙-青云志', img: '/static/images/img/m-img2.png', num: 2, sale: 60, check: false}
+          {id: 1001, title: '碟中谍5：神秘国度', img: '/static/images/img/m-img3.png', num: 4, sale: 50, check: false},
+          {id: 1002, title: '诛仙-青云志', img: '/static/images/img/m-img2.png', num: 2, sale: 60, check: false}
         ]
       },
       allChecked: function (e) {
@@ -74,7 +74,7 @@
       },
       reduxNum: function (index) {
         this.state.map((states, num) => {
-          if (num === index) {
+          if (num === index && states.num > 0) {
             states.num --
           }
         })
