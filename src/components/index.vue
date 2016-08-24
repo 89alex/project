@@ -16,13 +16,19 @@
     <a class="tab-item external" :class="{active: 4 == nav}" v-on:click="navChange(4)" v-link="{ name: 'shop'}">
       <span class="icon icon-cart"></span>
       <span class="tab-label">我的</span>
-      <span class="badge">2</span>
+      <span class="badge">{{shopNum}}</span>
     </a>
   </nav>
 </template>
 
 <script>
+  import {getShop} from '../vuex/getter'
   export default {
+    vuex: {
+      getters: {
+        getShop
+      }
+    },
     data () {
       return {
         routerName: this.$route.name,
@@ -47,8 +53,14 @@
         }
       }
     },
+    computed: {
+      shopNum: function () {
+        return this.getShop.length
+      }
+    },
     ready () {
       this.navIndex()
+      console.log(this.getShop)
     }
   }
 </script>

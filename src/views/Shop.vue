@@ -16,28 +16,35 @@
     </div>
     <div class="sale-account">
       <label for=""><input class="ui-checkbox" v-on:click="allChecked" type="checkbox"> 全选</label>
-      <div class="right">合计：<span>￥{{checks}}</span> <input class="confirm" type="submit" value="结算({{c_num}})"></div>
+      <div class="right">合计：<span>￥{{checks}}</span> <input @click="jieSuan" class="confirm" type="submit" value="结算({{c_num}})"></div>
     </div>
   </div>
 </template>
 
 <script>
+  import {getShop} from '../vuex/getter'
+  import {addNum, reduxNum, Checked, AllChecked} from '../vuex/action'
   export default {
+    vuex: {
+      getters: {
+        getShop
+      },
+      actions: {
+        addNum,
+        reduxNum,
+        Checked,
+        AllChecked
+      }
+    },
     data () {
       return {
-        state: [],
+        state: this.getShop,
         allCheckeds: false,
         d_check: 0,
         num: 0
       }
     },
     methods: {
-      getState: function () {
-        this.state = [
-          {id: 1001, title: '碟中谍5：神秘国度', img: '/static/images/img/m-img3.png', num: 4, sale: 50, check: false},
-          {id: 1002, title: '诛仙-青云志', img: '/static/images/img/m-img2.png', num: 2, sale: 60, check: false}
-        ]
-      },
       allChecked: function (e) {
         /* const checkbox = document.getElementsByClassName('ui-checkbox')
         const bool = e.target.getAttribute('checked')
@@ -53,31 +60,39 @@
         console.log(bool) */
         // console.log(e.target.setAttribute('checked', 'checked'))
         this.allCheckeds = !this.allCheckeds
-        this.state.map(states => {
-          states.check = this.allCheckeds
-        })
+        this.AllChecked(this.allCheckeds)
         // setTimeout(this.setNum, 100)
       },
-      Checked: function (index) {
-        this.state.map((states, num) => {
-          if (num === index) {
-            states.check = !states.check
+      jieSuan: function () {
+        var buttons1 = [
+          {
+            text: '请选择支付方式',
+            label: true
+          },
+          {
+            text: '支付宝',
+            bold: true,
+            color: 'danger',
+            onClick: function() {
+              $('body').append($.alert("你选择了“支付宝支付“"))
+            }
+          },
+          {
+            text: '微信',
+            onClick: function() {
+              $('body').append($.alert("你选择了“微信支付“"));
+            }
           }
-        })
-      },
-      addNum: function (index) {
-        this.state.map((states, num) => {
-          if (num === index) {
-            states.num ++
+        ];
+        var buttons2 = [
+          {
+            text: '取消',
+            bg: 'danger'
           }
-        })
-      },
-      reduxNum: function (index) {
-        this.state.map((states, num) => {
-          if (num === index && states.num > 0) {
-            states.num --
-          }
-        })
+        ];
+        var groups = [buttons1, buttons2];
+        // $.actions(groups)
+        $('body').append($.actions(groups))
       }
     },
     computed: {
@@ -100,16 +115,22 @@
         return this.num
       }
     },
+    route: {
+      data (transition) {
+        this.AllChecked(this.allCheckeds)
+        transition.next()
+      }
+    },
     ready () {
-      this.getState()
+      // console.log($.showPreloader())
     }
   }
 </script>
 
 <style>
-  .my-shop{ width: 100%; height: 100%; background: #ccccc7; }
+  .my-shop{ width: 100%; height: 100%;  margin-bottom: 2.3rem;  background: #ccccc7; }
   .my-shop label, .my-shop p{ display: inline-block; }
-  .sale{ background: #fff }
+  .sale{background: #fff }
   .my-shop .bar h1{ color: #fff }
   .my-shop .sale .s-header{ padding-left: .4rem; font-size: .8rem;  }
   .my-shop .sale .s-header p{ margin-left: .6rem; }
@@ -120,7 +141,7 @@
   .my-shop .sale .sale-list dd strong{ color: #cb2626 }
   .my-shop .sale .sale-list .s-add .btn{ width: 1rem; display: inline-block; }
   .my-shop .sale .sale-list .s-add p{ width: 4rem; background: #f00; text-align: center;  color: #fff; }
-  .my-shop .sale-account{ width: 100%; height: 2rem; line-height: 2rem; position: absolute; bottom: 2.5rem; border-top:1px solid #ccc; font-size: .8rem; }
+  .my-shop .sale-account{ width: 100%; height: 2rem; line-height: 2rem; background: #fff; position: fixed; bottom: 2.5rem; border-top:1px solid #ccc; font-size: .8rem; }
   .my-shop .sale-account label{ margin-left: 1rem; float: left; }
   .my-shop .sale-account .right{ float: right; }
   .my-shop .sale-account .right span{ color: #ff0000 }

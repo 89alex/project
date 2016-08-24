@@ -1,6 +1,6 @@
 <template>
   <a-header></a-header>
-  <div id="movie">
+  <div id="movie" v-on:touchend="scrollLoading">
     <div id="movie-con">
       <div v-for="lists in list" class="movie-list">
         <h1><i></i>{{lists.title}}</h1>
@@ -28,7 +28,8 @@
     data () {
       return {
         list: [],
-        time: null // 数据加载定时器
+        time: null, // 数据加载定时器
+        scrollTops: 0
       }
     },
     methods: {
@@ -83,7 +84,7 @@
         // const $movie = document.getElementById('movie')
         // 判断页面滚动底部
         const scrollHeight = document.body.offsetHeight - window.innerHeight
-        if (scrollHeight < (document.body.scrollTop - 50)) {
+        if (scrollHeight < (document.body.scrollTop - 20) && scrollHeight > 0) {
           clearTimeout(this.times)
           this.times = setTimeout(function () {
             data.map(datas => {
@@ -99,19 +100,25 @@
       }
     },
     route: {
-      canDeactivate (transition) {
+      data (transition) {
         // this.getState()
         // transition.next()
-        console.log('路由切换我就执行')
+        // document.body.scrollTop = 1000
+        console.log('路由切入我就执行')
+        $('body').append($.showPreloader('加载中，请稍后'))
+        setTimeout(function () {
+          $.hidePreloader();
+        }, 2000);
+        transition.next()
+      },
+      canDeactivate (transition) {
+        // this.scrollTops = document.body.scrollTop
+        // console.log(this.scrollTops)
         transition.next()
       }
     },
     ready () {
-      const that = this
       this.getState()
-      window.onscroll = function () {
-        that.scrollLoading()
-      }
       console.log('页面载入只执行一次')
     }
   }

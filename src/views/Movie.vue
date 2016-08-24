@@ -10,7 +10,7 @@
           <dd><p>{{lists.miaoshu}}</p></dd>
           <dd><p>主演：{{lists.persons}}</p></dd>
         </dl>
-        <span class="buy">购票</span>
+        <span @click="buyT($index)" class="buy">购票</span>
       </li>
     </ul>
   </div>
@@ -18,7 +18,13 @@
 
 <script>
   import aHeader from '../components/Header'
+  import {buyTicks} from '../vuex/action'
   export default {
+    vuex: {
+      actions: {
+        buyTicks
+      }
+    },
     components: {
       aHeader
     },
@@ -30,9 +36,21 @@
     methods: {
       getState: function () {
         this.list = [
-          {title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img1.png', max: 'IMAX 3D', grade: '9.0'},
-          {title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0'}
+          {id: 1001, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img1.png', max: 'IMAX 3D', grade: '9.0', sale: 50},
+          {id: 1002, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0', sale: 60},
+          {id: 1003, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 70},
+          {id: 1004, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0', sale: 65},
+          {id: 1005, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
+          {id: 1006, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
+          {id: 1007, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
+          {id: 1008, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80}
         ]
+      },
+      buyT: function (index) {
+        const array = {id: this.list[index].id, title: this.list[index].title, img: this.list[index].img, num: 1, sale: this.list[index].sale, check: false}
+        this.buyTicks(array)
+        // $.toast('购票成功，请在购物车结算', 1000345);
+        $('body').append( $.alert('购票成功，请在购物车中结算', '购票提示'))
       }
     },
     route: {
