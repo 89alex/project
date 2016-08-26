@@ -3,7 +3,7 @@
   <div class="buy-movie">
     <img width="100%" src="/static/images/img/buy-banner1.png" alt="">
     <ul class="movie-list">
-      <li v-for="lists in list">
+      <li v-for="lists in list" v-link="{name: 'moviedetail', params:{id: lists.id}}">
         <dl>
           <dt><img width="100%" :src="lists.img" alt=""></dt>
           <dd><h2>{{lists.title}}</h2><span class="max">{{lists.max}}</span><p class="num"><i>{{lists.grade}}</i>分</p></dd>
@@ -36,17 +36,18 @@
     methods: {
       getState: function () {
         this.list = [
-          {id: 1001, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img1.png', max: 'IMAX 3D', grade: '9.0', sale: 50},
-          {id: 1002, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0', sale: 60},
-          {id: 1003, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 70},
-          {id: 1004, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0', sale: 65},
-          {id: 1005, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
-          {id: 1006, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
-          {id: 1007, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
-          {id: 1008, title: '碟中谍5：神秘国度', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80}
+          {id: 1001, title: '碟中谍5：神秘国度1', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img1.png', max: 'IMAX 3D', grade: '9.0', sale: 50},
+          {id: 1002, title: '碟中谍5：神秘国度2', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0', sale: 60},
+          {id: 1003, title: '碟中谍5：神秘国度3', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 70},
+          {id: 1004, title: '碟中谍5：神秘国度4', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '8.0', sale: 65},
+          {id: 1005, title: '碟中谍5：神秘国度5', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img1.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
+          {id: 1006, title: '碟中谍5：神秘国度6', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img2.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
+          {id: 1007, title: '碟中谍5：神秘国度7', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img3.png', max: 'IMAX 2D', grade: '7.0', sale: 80},
+          {id: 1008, title: '碟中谍5：神秘国度8', miaoshu: '外练净骨皮，阿汤扒飞机', persons: '汤姆.克鲁斯 丽贝卡 佛洛斯 王宝强 陈奕迅', img: '/static/images/img/m-img1.png', max: 'IMAX 2D', grade: '7.0', sale: 80}
         ]
       },
       buyT: function (index) {
+        event.stopPropagation();
         const array = {id: this.list[index].id, title: this.list[index].title, img: this.list[index].img, num: 1, sale: this.list[index].sale, check: false}
         this.buyTicks(array)
         // $.toast('购票成功，请在购物车结算', 1000345);
@@ -56,6 +57,7 @@
     route: {
       data (transition) {
         // this.getState()
+        // transition.next()
       }
     },
     ready () {

@@ -104,6 +104,7 @@
         // this.getState()
         // transition.next()
         // document.body.scrollTop = 1000
+        $('body').scrollTop(1000)
         console.log('路由切入我就执行')
         $('body').append($.showPreloader('加载中，请稍后'))
         setTimeout(function () {
@@ -112,7 +113,7 @@
         transition.next()
       },
       canDeactivate (transition) {
-        // this.scrollTops = document.body.scrollTop
+        this.scrollTops = document.body.scrollTop
         // console.log(this.scrollTops)
         transition.next()
       }

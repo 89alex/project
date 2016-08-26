@@ -35,6 +35,12 @@ router.map({
     component: (resolve) => {
       require(['./views/Shop.vue'], resolve)
     }
+  },
+  '/moviedetail/:id': {
+    name: 'moviedetail',
+    component: (resolve) => {
+      require(['./views/movieDetail.vue'], resolve)
+    }
   }
 })
 
