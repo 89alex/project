@@ -41,6 +41,12 @@ router.map({
     component: (resolve) => {
       require(['./views/movieDetail.vue'], resolve)
     }
+  },
+  '/foundresult/:keyword': {
+    name: 'foundresult',
+    component: (resolve) => {
+      require(['./views/foundResult.vue'], resolve)
+    }
   }
 })
 

@@ -106,10 +106,6 @@
         // document.body.scrollTop = 1000
         $('body').scrollTop(1000)
         console.log('路由切入我就执行')
-        $('body').append($.showPreloader('加载中，请稍后'))
-        setTimeout(function () {
-          $.hidePreloader();
-        }, 2000);
         transition.next()
       },
       canDeactivate (transition) {
@@ -121,6 +117,10 @@
     ready () {
       this.getState()
       console.log('页面载入只执行一次')
+      $('body').append($.showPreloader('加载中，请稍后'))
+      setTimeout(function () {
+        $.hidePreloader();
+      }, 1000);
     }
   }
 </script>

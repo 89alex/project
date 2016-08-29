@@ -62,6 +62,10 @@
     },
     ready () {
       this.getState()
+      $('body').append($.showPreloader('加载中，请稍后'))
+      setTimeout(function () {
+        $.hidePreloader();
+      }, 1000);
     }
   }
 </script>
