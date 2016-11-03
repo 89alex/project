@@ -1,1 +1,1 @@
-转自： https://github.com/gaearon/react-transform-boilerplate
+webpack分文件打包css，js，第三库，支持热加载，UI库：ant-design
